@@ -1,7 +1,6 @@
 <template>
   <div>
-    
-    <router-view/>
+    <h4>我是登录页面</h4>
   </div>
 </template>
 
