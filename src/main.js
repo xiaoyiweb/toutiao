@@ -8,11 +8,13 @@ import router from './router'
 import '@/utils/vant'
 // 导入公共样式
 import '@/style/index.less'
-
+// 导入vuex
+import store from '@/store'
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

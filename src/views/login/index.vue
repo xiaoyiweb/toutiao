@@ -65,18 +65,18 @@ export default {
   },
 
   methods: {
-    onSubmit(data) {
-      this.isTrue = true
-      loginAPI(data)
-        .then((res) => {
-          this.$toast.success("登录成功");
-        })
-        .catch((err) => {
-          this.$toast.fail("登录失败");
-        })
-        .finally(()=>{
-          this.isTrue = false
-        })
+    async onSubmit(data) {
+      this.isTrue = true;
+      try {
+        const res = await loginAPI(data);
+        this.$store.commit("setToken", res.data.data);
+        this.$toast.success("登录成功");
+        this.$router.push("/layout/my");
+      } catch {
+        this.$toast.fail("登录失败");
+      } finally {
+        this.isTrue = false;
+      }
     },
   },
 };
