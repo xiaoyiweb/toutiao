@@ -28,7 +28,7 @@
     </van-grid>
 
     <van-cell-group>
-      <van-cell is-link title="编辑资料" icon="edit" />
+      <van-cell is-link title="编辑资料" icon="edit" to="/my/edit" />
       <van-cell is-link title="小智同学" icon="chat-o" />
       <van-cell is-link title="系统设置" icon="setting-o" />
       <van-cell @click="logout" is-link title="退出登录" icon="warning-o" />
@@ -37,13 +37,18 @@
 </template>
 
 <script>
-import { getUserInfoAPI } from "@/api";
 import { delToken } from "@/utils/auth";
 export default {
   data() {
     return {
-      userInfo: {},
+      // userInfo: {},
     };
+  },
+
+  computed:{
+    userInfo:function(){
+      return this.$store.state.userInfo
+    }
   },
 
   methods: {
@@ -55,8 +60,10 @@ export default {
   },
 
   async created() {
-    const res = await getUserInfoAPI();
-    this.userInfo = res.data.data;
+    // const res = await getUserInfoAPI();
+    // this.userInfo = res.data.data;
+    // this.$store.commit('setUserInfo',res.data.data)
+    this.$store.dispatch("setUserInfo");
   },
 };
 </script>

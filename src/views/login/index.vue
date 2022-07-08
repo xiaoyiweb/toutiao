@@ -71,7 +71,13 @@ export default {
         const res = await loginAPI(data);
         this.$store.commit("setToken", res.data.data);
         this.$toast.success("登录成功");
-        this.$router.push("/layout/my");
+        const url = this.$route.query.url
+        if(url){
+          this.$router.push(url)
+        }else{
+          this.$router.push('/layout/home')
+        }
+
       } catch {
         this.$toast.fail("登录失败");
       } finally {

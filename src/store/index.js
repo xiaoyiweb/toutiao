@@ -1,16 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {getUserInfoAPI} from '@/api'
 Vue.use(Vuex)
 import { getToken, setToken } from '@/utils/auth'
 
 const store = new Vuex.Store({
     state: {
-        token:getToken() || []
+        token: getToken() || [],
+        userInfo: {}
     },
     mutations: {
-        setToken(state,token){
+        setToken(state, token) {
             state.token = token
             setToken(token)
+        },
+        setUserInfo(state, payload) {
+            state.userInfo = payload
+        }
+    },
+    actions: {
+        async setUserInfo(context) {
+            if (!context.state.userInfo.name) {
+                const res = await getUserInfoAPI()
+                context.commit('setUserInfo',res.data.data)
+            }
         }
     }
 })

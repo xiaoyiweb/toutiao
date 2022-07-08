@@ -1,7 +1,13 @@
 import axios from 'axios'
 import store from '@/store'
-
+import { Toast } from 'vant';
+import router from '@/router';
 const request = axios.create({
+    baseURL: 'http://toutiao.itheima.net/'
+})
+
+
+const refRequest = axios.create({
     baseURL: 'http://toutiao.itheima.net/'
 })
 
@@ -18,4 +24,37 @@ request.interceptors.request.use(function (config) {
     return Promise.reject(error);
 });
 
+// 添加响应拦截
+request.interceptors.response.use(response => {
+    return response
+}, async error => {
+    // 判断错误的状态码是否是401
+    // console.log(error.response)
+    const status = error.response.status
+    if (status === 401) {
+        const refresh_token = store.state.token.refresh_token
+        console.log(refresh_token)
+        try {
+            const res = await refRequest({
+                url: '/v1_0/authorizations',
+                method: 'PUT',
+                headers: {
+                    Authorization: `Bearer ${refresh_token}`
+                }
+            })
+            store.commit('setToken', {
+                token: res.data.data.token,
+                refresh_token,
+            })
+            // console.log(error)
+            return request(error.config)
+        } catch {
+            Toast.fail('登录已过期')
+            router.push('/login')
+            return Promise.reject(new Error('refresh_token 已过期'))
+        }
+    } else {
+        return Promise.reject(error)
+    }
+})
 export default request
