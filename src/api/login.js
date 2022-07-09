@@ -13,3 +13,20 @@ export const getUserInfo = () => {
         url: '/v1_0/user/profile',
     })
 }
+
+export const editInfo = (data) => {
+    return request({
+        url: '/v1_0/user/profile',
+        method: 'PATCH',
+        data
+    })
+}
+
+export const editPhoto = (data) => {
+    return request({
+        url: '/v1_0/user/photo',
+        method: 'PATCH',
+        data
+    })
+}
+

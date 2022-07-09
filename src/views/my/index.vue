@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import { delToken } from "@/utils/auth";
 export default {
   data() {
     return {
@@ -45,15 +44,15 @@ export default {
     };
   },
 
-  computed:{
-    userInfo:function(){
-      return this.$store.state.userInfo
-    }
+  computed: {
+    userInfo: function () {
+      return this.$store.state.userInfo;
+    },
   },
 
   methods: {
     logout() {
-      delToken();
+      this.$store.commit("logout");
       this.$router.push("/login");
       this.$toast.success("退出登录成功");
     },

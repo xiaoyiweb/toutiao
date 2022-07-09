@@ -25,7 +25,7 @@ const routes = [
       { name: 'video', path: 'video', component: video }
     ]
   },
-  { name: 'edit', path: '/my/edit', component: edit },
+  { name: 'edit', path: '/my/edit', component: edit, meta: { needLogin: true } },
 ]
 
 const router = new VueRouter({

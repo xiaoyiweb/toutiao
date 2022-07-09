@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import { NavBar, Form, Field, Button, Toast, Tabbar, TabbarItem, Icon, Image as VanImage, Grid, GridItem, Cell, CellGroup } from 'vant';
+import { Dialog } from 'vant';
+import { Popup } from 'vant';
+import { DatetimePicker } from 'vant';
+import { Uploader } from 'vant';
 
 
 Vue.use(NavBar);
@@ -15,3 +19,7 @@ Vue.use(Grid);
 Vue.use(GridItem);
 Vue.use(Cell);
 Vue.use(CellGroup);
+Vue.use(Dialog);
+Vue.use(Popup);
+Vue.use(DatetimePicker);
+Vue.use(Uploader);
