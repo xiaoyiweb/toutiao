@@ -10,6 +10,8 @@ import '@/utils/vant'
 import '@/style/index.less'
 // 导入vuex
 import store from '@/store'
+// 导入过滤器
+import '@/filters'
 
 Vue.config.productionTip = false
 

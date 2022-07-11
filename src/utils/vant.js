@@ -4,8 +4,14 @@ import { Dialog } from 'vant';
 import { Popup } from 'vant';
 import { DatetimePicker } from 'vant';
 import { Uploader } from 'vant';
+import { Tab, Tabs } from 'vant';
+import { List } from 'vant';
+import { PullRefresh } from 'vant';
+import { Divider } from 'vant';
 
-
+Vue.use(Divider);
+Vue.use(PullRefresh);
+Vue.use(List);
 Vue.use(NavBar);
 Vue.use(Form);
 Vue.use(Field);
@@ -23,3 +29,5 @@ Vue.use(Dialog);
 Vue.use(Popup);
 Vue.use(DatetimePicker);
 Vue.use(Uploader);
+Vue.use(Tab);
+Vue.use(Tabs);

@@ -13,6 +13,7 @@ import home from '@/views/home'
 import my from '@/views/my'
 import video from '@/views/video'
 import edit from '@/views/my/edit'
+import detail from '@/views/detail'
 
 const routes = [
   { path: '', redirect: '/login' },
@@ -26,6 +27,7 @@ const routes = [
     ]
   },
   { name: 'edit', path: '/my/edit', component: edit, meta: { needLogin: true } },
+  { name: 'detail', path: '/home/detail', component: detail },
 ]
 
 const router = new VueRouter({
