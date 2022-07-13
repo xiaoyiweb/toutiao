@@ -103,6 +103,7 @@ export default {
   overflow: auto;
   width: 100%;
   .detail {
+    font-size: 12px;
     span {
       margin-right: 50px;
     }

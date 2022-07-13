@@ -8,7 +8,9 @@ import { Tab, Tabs } from 'vant';
 import { List } from 'vant';
 import { PullRefresh } from 'vant';
 import { Divider } from 'vant';
+import { ActionSheet } from 'vant';
 
+Vue.use(ActionSheet);
 Vue.use(Divider);
 Vue.use(PullRefresh);
 Vue.use(List);

@@ -58,12 +58,18 @@
         </van-button>
       </div>
     </div>
+
+    <comment />
   </div>
 </template>
 
 <script>
+import comment from "./components/comment.vue";
 import { articleDetailAPI, followAuthAPI, unfollowAuthAPI } from "@/api";
 export default {
+  components: {
+    comment,
+  },
   data() {
     return {
       artObj: {},
@@ -80,9 +86,7 @@ export default {
       this.artObj.is_followed = true;
     },
     async unfollow() {
-      await unfollowAuthAPI({
-        target: this.artObj.aut_id,
-      });
+      await unfollowAuthAPI(this.artObj.aut_id);
       // 提示成功
       this.$toast.fail("失去迷弟一枚");
       // 手动将状态改为未关注
@@ -124,7 +128,7 @@ export default {
     .article {
       margin-top: 30px;
       white-space: pre-wrap;
-      word-break: break-all;
+      word-break: break-word;
       pre {
         // 将标识结构换行
         white-space: pre-wrap;
