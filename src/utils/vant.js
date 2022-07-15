@@ -9,7 +9,9 @@ import { List } from 'vant';
 import { PullRefresh } from 'vant';
 import { Divider } from 'vant';
 import { ActionSheet } from 'vant';
+import { Search } from 'vant';
 
+Vue.use(Search);
 Vue.use(ActionSheet);
 Vue.use(Divider);
 Vue.use(PullRefresh);

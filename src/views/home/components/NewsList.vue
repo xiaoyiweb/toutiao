@@ -1,5 +1,5 @@
 <template>
-  <div class="newsList">
+  <div class="newsList" ref="newsList">
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
       <van-list
         v-model="loading"
@@ -52,7 +52,19 @@ export default {
       loading: false,
       finished: false,
       refreshing: false,
+      scrollTop: "",
     };
+  },
+
+  mounted() {
+    this.$refs.newsList.onscroll = () => {
+      this.scrollTop = this.$refs.newsList.scrollTop;
+    };
+  },
+
+  activated() {
+    // 激活时再把之前的滚动条的高度赋值给滚动条，让它滚到对应的位置
+    this.$refs.newsList.scrollTop = this.scrollTop;
   },
 
   methods: {

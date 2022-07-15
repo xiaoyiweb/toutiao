@@ -2,6 +2,8 @@ import { login, getUserInfo, editInfo, editPhoto } from './login'
 import { getUserChannel, getArticle, articleDetail, followAuth, unfollowAuth } from './home'
 import { getComments, sendComments } from './comment'
 import { getAllChannels, delChannels, addChannels } from './channels'
+import { getSuggest, getResult } from './search'
+
 
 export const loginAPI = login
 export const getUserInfoAPI = getUserInfo
@@ -17,3 +19,5 @@ export const sendCommentsAPI = sendComments
 export const getAllChannelsAPI = getAllChannels
 export const delChannelsAPI = delChannels
 export const addChannelsAPI = addChannels
+export const getSuggestAPI = getSuggest
+export const getResultAPI = getResult

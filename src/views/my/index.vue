@@ -29,7 +29,7 @@
 
     <van-cell-group>
       <van-cell is-link title="编辑资料" icon="edit" to="/my/edit" />
-      <van-cell is-link title="小智同学" icon="chat-o" />
+      <van-cell is-link title="小智同学" icon="chat-o" to="/my/xiaozhi" />
       <van-cell is-link title="系统设置" icon="setting-o" />
       <van-cell @click="logout" is-link title="退出登录" icon="warning-o" />
     </van-cell-group>

@@ -1,6 +1,11 @@
 <template>
   <div>
-    <router-view />
+    <keep-alive>
+      <router-view v-if="$route.meta.needKeep" />
+    </keep-alive>
+
+    <router-view v-if="!$route.meta.needKeep" />
+
     <van-tabbar route>
       <van-tabbar-item replace to="/layout/home" icon="home-o"
         >首页</van-tabbar-item

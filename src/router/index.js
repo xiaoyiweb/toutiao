@@ -6,14 +6,17 @@ Vue.use(Toast)
 Vue.use(VueRouter)
 
 // 导入页面组件
-import login from '@/views/login'
-import layout from '@/views/layout'
-import ask from '@/views/ask'
-import home from '@/views/home'
-import my from '@/views/my'
-import video from '@/views/video'
-import edit from '@/views/my/edit'
-import detail from '@/views/detail'
+const login = () => import('@/views/login')
+const layout = () => import('@/views/layout')
+const ask = () => import('@/views/ask')
+const home = () => import('@/views/home')
+const my = () => import('@/views/my')
+const video = () => import('@/views/video')
+const edit = () => import('@/views/my/edit')
+const detail = () => import('@/views/detail')
+const search = () => import('@/views/search')
+const result = () => import('@/views/search/result')
+const xiaozhi = () => import('@/views/my/xiaozhi')
 
 const routes = [
   { path: '', redirect: '/login' },
@@ -21,13 +24,16 @@ const routes = [
   {
     name: 'layout', path: '/layout', component: layout, children: [
       { name: 'ask', path: 'ask', component: ask },
-      { name: 'home', path: 'home', component: home },
+      { name: 'home', path: 'home', component: home, meta: { needKeep: true } },
       { name: 'my', path: 'my', component: my, meta: { needLogin: true } },
       { name: 'video', path: 'video', component: video }
     ]
   },
   { name: 'edit', path: '/my/edit', component: edit, meta: { needLogin: true } },
   { name: 'detail', path: '/home/detail', component: detail },
+  { name: 'search', path: '/home/search', component: search },
+  { name: 'result', path: '/search/result', component: result },
+  { name: 'xiaozhi', path: '/my/xiaozhi', component: xiaozhi },
 ]
 
 const router = new VueRouter({

@@ -9,7 +9,7 @@
         />
       </template>
       <template #right>
-        <van-button>
+        <van-button @click="$router.push('/home/search')">
           <van-icon class="myicon" name="search" />
           搜索
         </van-button>
